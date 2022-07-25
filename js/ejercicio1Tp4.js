@@ -11,7 +11,7 @@ apagarAuto (){
     this.motor = false
 }
 
-}
+};
 
 
 
