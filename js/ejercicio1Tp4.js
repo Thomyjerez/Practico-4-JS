@@ -3,8 +3,8 @@ let auto = {
     marca: " Mercedes",
     modelo: " AMG clase C",
     motor: false,
-encenderAuto (){
-    this.motor = true
+    encenderAuto (){
+        this.motor = true
 },
 
 apagarAuto (){
