@@ -71,6 +71,19 @@ class Agenda {
     console.log(this.contactos);
 
   }
+
+  listarAgenda(){
+    for(let i = 0; i<this.contactos.length; i++){
+        console.log(this.contactos[i])
+    }
+  }
+  
+  huecosLibres(){
+    console.log(`La agenda tiene ${this.tamanio-this.contactos.length} huecos libres`)
+  }
+  set modificarTamanio(nuevoTamanio){
+    this.tamanio = nuevoTamanio;
+  }
 }
 // creo la agenda
 
@@ -105,11 +118,13 @@ switch (opcion){
         let nombreBuscado = prompt('Ingrese un nombre').toLowerCase();
         agendaTelefonica.existeContacto(nombreBuscado);
         break;
-    case 3:
+    case 3: 
+         agendaTelefonica.listarAgenda();
         
         break;
     case 4:
-
+        let nombreEncontrado = prompt('Ingrese un nombre').toLowerCase()
+        agendaTelefonica.existeContacto(nombreEncontrado)
         break;
     case 5:
         let contactoBorrar = prompt('Ingrese un nombre').toLowerCase();
@@ -117,13 +132,15 @@ switch (opcion){
 
         break;
     case 6:
-
+        agendaTelefonica.agendaLlena();
         break;
     case 7:
-
+        agendaTelefonica.huecosLibres();
         break;
      
     case 8:
+        let cambiarTamanio =parseInt(prompt('Elija el tamaño de la agenda'));
+        agendaTelefonica.modificarTamanio = cambiarTamanio;
         break;
     default:
         alert('Ingreso una opcion incorrecta');    
