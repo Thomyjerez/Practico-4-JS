@@ -7,12 +7,11 @@
 // Por último, indicar cuál de los 2 objetos “libros” tiene más páginas.
 
 class Libro {
-  constructor(libro, isbn, titulo, autor, numeroPaginas) {
-    (this.libro = libro),
-      (this.isbn = isbn),
-      (this.titulo = titulo),
-      (this.autor = autor),
-      (this.numeroPaginas = numeroPaginas);
+  constructor( isbn, titulo, autor, numeroPaginas) {
+      this.isbn = isbn,
+      this.titulo = titulo,
+      this.autor = autor,
+      this.numeroPaginas = numeroPaginas;
   }
 
   set modificarIsbn(nuevoIsbn) {
@@ -48,37 +47,36 @@ class Libro {
   }
 
   mostrarLibro() {
-    return `El libro: ${this.libro}, con el ISBN: ${this.mostrarIsbn}, creado por el autor ${this.mostrarAutor}, tiene una cantidad de ${this.mostrarNumeroPaginas} paginas.`;
+    return `<p>El libro: ${this.mostrarTitulo}, con el ISBN: ${this.mostrarIsbn}, creado por el autor ${this.mostrarAutor}, tiene una cantidad de ${this.mostrarNumeroPaginas} paginas.</p>`;
   }
 }
 
 function biblioteca(libro1, libro2) {
   if (libro1.mostrarNumeroPaginas > libro2.mostrarNumeroPaginas) {
-    return `<p>${libro1} tiene mayor cantidad de paginas</p>`
-    
-  } else if((libro2.mostrarNumeroPaginas > libro1.mostrarNumeroPaginas)) {
-    return  `<p>${libro2} tiene mayor cantidad de paginas</p>` 
+    return `<p>${libro1.mostrarTitulo} tiene mayor cantidad de paginas</p>`;
+  } else if (libro1.mostrarNumeroPaginas === libro2.mostrarNumeroPaginas) {
+    return `<p>El libro ${libro1.mostrarTitulo} tiene la misma cantidad de pagina que ${libro2.mostrarTitulo}</p>`;
   } else {
-    `<p>El ${libro1} y el ${libro2} tienen la misma cantidad de paginas</p>`
+    return `<p>El libro ${libro2.mostrarTitulo} tiene mayor cantidad de paginas</p>`;
   }
 }
 
 let laVidaEsUnaMisionSecreta = new Libro(
-    "La vida es una mision secreta",
-    9789500765381,
-    160,
-    'Carlos Alberto "El Indio" Solari'
+  9789500765381,
+  "La vida es una mision secreta",
+  'Carlos Alberto "El Indio" Solari',
+  160,
 );
 let cienAñosDeSoledad = new Libro(
-    "Cien años de soledad",
-    9789871138142,
-    496,
-    "Gabriel Garcia Marquez"
+  9789871138142,
+  "Cien años de soledad",
+  "Gabriel garcia marquez",
+  496,
 );
 
-document.write(laVidaEsUnaMisionSecreta.mostrarLibro());
-document.write(`<br>`);
 document.write(cienAñosDeSoledad.mostrarLibro());
+document.write(laVidaEsUnaMisionSecreta.mostrarLibro());
+document.write(biblioteca(laVidaEsUnaMisionSecreta, cienAñosDeSoledad));
 
 // Crear sus respectivos métodos get y set correspondientes para cada propiedad. Crear el método mostrarLibro()
 // para mostrar la información relativa al libro con el siguiente formato:
